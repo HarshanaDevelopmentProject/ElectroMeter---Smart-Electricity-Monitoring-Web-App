@@ -1,0 +1,1 @@
+document.getElementById('new-project-btn').addEventListener('click',()=>{location.href='../page/connect-page.html'});

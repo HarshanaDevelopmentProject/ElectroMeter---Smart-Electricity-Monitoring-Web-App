@@ -1,0 +1,260 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.connect-outer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background: linear-gradient(180deg, rgb(189, 221, 48)32%, rgb(23, 26, 209, 0.7)73%);
+
+}
+
+
+
+.connect-inner {
+    
+    height: 100%;
+    border: 10px solid rgb(233, 35, 9);
+    box-shadow: 10px 10px 35px rgb(196, 47, 28);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('https://img.freepik.com/free-photo/close-up-photography-light-bulb_395237-247.jpg?size=626&ext=jpg&ga=GA1.1.2081802722.1694067941&semt=ais');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.connect-form {
+    width: 90%;
+    height: 90%;
+    
+}
+
+.connect-input {
+    width: 90%;
+    height: 50px;
+    color: rgb(186, 139, 240);
+    border-color: red;
+    border-radius: 13px;
+    box-shadow: 5px 5px 3px rgb(199, 68, 68);
+    font-family: 'Anton', sans-serif;
+    font-weight: bold;
+    background-color: rgb(34, 7, 131, 0.2);
+    font-size: 27px;
+}
+
+::placeholder {
+    color: #360407;
+}
+
+.connect-label {
+    font-family: 'Yuji Hentaigana Akari', cursive;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 30px;
+    color: #044704;
+    background-color: rgb(181, 208, 223, 0.7);
+}
+
+.connect-btn {
+    width: 75%;
+    height: 70px;
+    border-radius: 30px;
+    margin: 0 0 0 30px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: rgb(86, 230, 230);
+    font-size: 40px;
+    text-align: center;
+    text-shadow: #d6414bfb 3px 2px;
+    border: 4px solid rgb(78, 21, 3);
+
+}
+
+.connect-btn:hover {
+    background-color: aliceblue;
+    border-top: 4px solid red;
+    border-bottom: 4px solid red;
+    border-left: 6px dotted red;
+    border-right: 6px dotted red;
+    text-decoration: underline;
+    transition: 1s ease-out;
+}
+
+.connect-selecter {
+    margin-left: 0px;
+    width: 70%;
+    background-color: rgb(89, 107, 209, 0.4);
+    color: rgb(2, 3, 24);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    border: 3px solid red;
+    font-size: 20px;
+
+}
+
+
+/* ************************************************ responcive part ***************************************************************************************** */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+
+
+    .connect-label {
+        font-size: 25px;
+    }
+
+    .connect-input {
+        font-size: 22px;
+    }
+
+    .connect-selecter {
+        font-size: 16px;
+    }
+
+    .connect-btn {
+        height: 55px;
+        font-size: 28px;
+    }
+
+}
+
+
+@media (min-width: 568px) and (max-width: 767px) {
+
+
+    .connect-label {
+        font-size: 20px;
+    }
+
+    .connect-input {
+        font-size: 18px;
+    }
+
+    .connect-selecter {
+        font-size: 13px;
+    }
+
+    .connect-btn {
+        height: 55px;
+        font-size: 25px;
+    }
+}
+
+
+@media (min-width: 414px) and (max-width: 567px) {
+
+    .connect-label {
+        font-size: 17px;
+    }
+
+    .connect-input {
+        font-size: 15px;
+    }
+
+    .connect-selecter {
+        font-size: 10px;
+    }
+
+    .connect-btn {
+        height: 55px;
+        font-size: 25px;
+    }
+
+
+}
+
+
+@media (min-width: 375px) and (max-width: 413px) {
+
+
+
+
+    .connect-label {
+        font-size: 17px;
+    }
+
+    .connect-input {
+        font-size: 15px;
+    }
+
+    .connect-selecter {
+        font-size: 10px;
+    }
+
+    .connect-btn {
+        height: 55px;
+        font-size: 25px;
+    }
+
+}
+
+
+@media (min-width: 320px) and (max-width: 374px) {
+
+
+
+    .connect-label {
+        font-size: 15px;
+    }
+
+    .connect-input {
+        font-size: 13px;
+    }
+
+    .connect-selecter {
+        font-size: 8px;
+    }
+
+    .connect-btn {
+        height: 45px;
+        font-size: 20px;
+    }
+
+
+}
+
+
+@media (max-width: 319px) {
+
+
+    .connect-label {
+        font-size: 15px;
+    }
+
+    .connect-input {
+        font-size: 13px;
+    }
+
+    .connect-selecter {
+        font-size: 8px;
+    }
+
+    .connect-btn {
+        height: 45px;
+        font-size: 20px;
+    }
+}
+
+/*********************************************** animation part ***********************************************************************************/
+@keyframes header-animation {
+    0% {}
+
+    50% {
+        transform: matrix(1, 0, 1, 1, 2, 3)
+    }
+
+    100% {
+        transform: matrix(1, 0, 2, 2, 3, 2)
+    }
+
+}
+
+/* ******************************************* font url ****************************************************************************************** */
+@import url('https://fonts.googleapis.com/css2?family=Yuji+Hentaigana+Akari&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');

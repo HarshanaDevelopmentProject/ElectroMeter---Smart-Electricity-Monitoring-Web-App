@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Electricity Bill | Connect</title>
+    <link rel="icon" href="https://img.icons8.com/?size=64&id=Cj1g0kF53YnD&format=png">
+    <link rel="stylesheet" href="../style//connect-page.css">
+</head>
+
+<body>
+
+    <div class="connect-outer">
+
+        <div class="connect-inner col-9">
+            <div class="connect-form">
+                <label for="project-name" class="connect-label">Project Name::</label>&nbsp;
+                <input type="text" placeholder="Your Project Name" class="connect-input" id="project-name">
+                <br><br>
+
+                <label for="ip-address" class="connect-label">Node Mcu Ip Address::</label>&nbsp;
+                <input type="text" placeholder="Your Nodemcu ip address" class="connect-input" id="ip-address">
+                <br><br>
+
+                <label for="port" class="connect-label">Port Number::</label>&nbsp;
+                <input type="text" placeholder="NodeMcu port number" class="connect-input" id="port">
+                <br><br>
+                <label for="connect-selector" style="width: 50%;" class="connect-label">Board Type::</label>
+                <select class="form-select connect-selecter " aria-label="Default select example">
+                    <option selected>Select type of NodeMcu</option>
+                    <option value="1">ESP8266</option>
+                    <option value="2">ESP32</option>
+                </select>
+                <br><br>
+                <button id="connect-btn" class="connect-btn ">Connect... </button>
+
+            </div>
+        </div>
+        <script src="../js/connect-page.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,380 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/* ************************************************* date-time **************************************************************************** */
+.dashboard-outer {
+    width: 100%;
+    height: 100vh;
+    border: 1px solid red;
+    background-color: rgba(229, 233, 16, 0.363);
+}
+
+.dashboard-date-time-outer {
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+}
+
+.date-time-inner {
+    width: 50%;
+    height: 100%;
+    border: 3px solid red;
+    background-color: aquamarine;
+    display: flex;
+}
+
+.date-time-icon {
+    width: 20%;
+    height: 100%;
+
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.date-time {
+    width: 80%;
+    height: 100%;
+
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+}
+
+
+.material-symbols-outlined {
+    font-size: 50px;
+}
+
+/* ****************************************************** new project *************************************************************************** */
+.dashboard-new-project-outer {
+    width: 100%;
+    height: 150px;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-project-btn {
+    height: 70px;
+    border-radius: 30px;
+    border: 6px solid green;
+    font-family: 'Yuji Hentaigana Akari', cursive;
+    font-weight: bolder;
+    font-size: 30px;
+    background-color: rgb(0, 255, 221);
+}
+
+
+/* ********************************************************* project search bar ***************************************************************** */
+.project-search-bar-outer {
+    width: 100%;
+    height: 80px;
+    border: 1px solid green;
+    display: flex;
+    justify-content: end;
+
+}
+
+.search-bar-inner {
+    border: 1px solid rgb(192, 3, 199);
+    height: 100%;
+    display: flex;
+    
+    align-items: center;
+}
+
+.search-input {
+    width: 80%;
+    height: 100%;
+    border: 1px solid green;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    
+
+}
+
+.search-text {
+    width: 80%;
+    height: 90%;
+    border: 2px solid red;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.search-text::placeholder {
+    font-size: 15px;
+}
+
+.search-button {
+    width: 20%;
+    height: 90%;
+    border: 1px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.search-button:hover{
+    border: 3px solid red;
+    background-color: black;
+    
+}
+
+.search-btn-icon {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(16, 223, 9, 0.2);
+    font-weight: bold
+}
+.search-btn-icon:hover{
+    color: white;
+}
+
+/* ****************************************************** dashboard-project-table-outer ********************************************************* */
+.dashboard-project-table-outer {
+    width: 100%;
+    height: auto;
+    border: 1px solid blue;
+    padding-top: 20px;
+}
+
+.project-table-head {
+    font-size: 25px;
+    background-color: rgb(63, 235, 20);
+    border: 2px solid black;
+}
+
+.project-table-body {
+    font-size: 20px;
+    background-color: rgba(236, 9, 9, 0.514);
+}
+
+/* *************************************************** responcive ******************************************************************************  */
+
+@media (min-width: 1920px) and (max-width: 2560px) {}
+
+
+@media (min-width: 1440px) and (max-width: 1919px) {}
+
+
+@media (min-width: 1280px) and (max-width: 1439px) {}
+
+
+@media (min-width: 1024px) and (max-width: 1279px) {}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {}
+
+
+@media (min-width: 568px) and (max-width: 767px) {
+    .date-time-icon {
+        width: 22%;
+    }
+
+    .date-time {
+        width: 78%;
+    }
+
+    .date-time-text {
+        font-size: 24px;
+    }
+
+    .material-symbols-outlined {
+        font-size: 36px;
+    }
+
+    /* ****************** project table ******************************** */
+
+    .project-table-head {
+        font-size: 18px;
+
+
+    }
+
+    .project-table-body {
+        font-size: 16px;
+    }
+
+}
+
+
+@media (min-width: 414px) and (max-width: 567px) {
+    .date-time-icon {
+        width: 22%;
+    }
+
+    .date-time {
+        width: 78%;
+    }
+
+    .date-time-text {
+        font-size: 20px;
+    }
+
+    .material-symbols-outlined {
+        font-size: 29px;
+    }
+   /* ****************** new project btn *********************************** */
+
+   .new-project-btn{
+    font-size: 22px;
+}
+    /* ****************** search bar *********************************** */
+
+    .search-text.search-text::placeholder {
+        font-size: 11px;
+    }
+
+    /* ****************** project table ******************************** */
+
+    .project-table-head {
+        font-size: 15px;
+
+
+    }
+
+    .project-table-body {
+        font-size: 13px;
+    }
+
+}
+
+
+
+
+@media (min-width: 375px) and (max-width: 413px) {
+    .date-time-icon {
+        width: 20%;
+    }
+
+    .date-time {
+        width: 80%;
+    }
+
+    .date-time-text {
+        font-size: 19px;
+    }
+
+    .material-symbols-outlined {
+        font-size: 26px;
+    }
+    /* ****************** new project btn *********************************** */
+
+    .new-project-btn{
+        font-size: 20px;
+    }
+    /* ****************** search bar *********************************** */
+
+    .search-text.search-text::placeholder {
+        font-size: 10px;
+    }
+
+    /* ****************** project table ******************************** */
+
+    .project-table-head {
+        font-size: 14px;
+
+
+    }
+
+    .project-table-body {
+        font-size: 12px;
+    }
+
+
+}
+
+
+@media (min-width: 320px) and (max-width: 374px) {
+    .date-time-icon {
+        width: 20%;
+    }
+
+    .date-time {
+        width: 80%;
+    }
+
+    .date-time-text {
+        font-size: 16px;
+    }
+
+    .material-symbols-outlined {
+        font-size: 23px;
+    }
+    /* ****************** new project btn *********************************** */
+    .new-project-btn{
+        font-size: 18px;
+    }
+    /* ****************** search bar *********************************** */
+
+    .search-text.search-text::placeholder {
+        font-size: 8px;
+    }
+
+    /* ****************** project table ******************************** */
+
+    .project-table-head {
+        font-size: 12px;
+
+
+    }
+
+    .project-table-body {
+        font-size: 10px;
+    }
+
+}
+
+
+@media (max-width: 319px) {
+
+    /* ***************** date and time ******************************* */
+    .date-time-icon {
+        width: 20%;
+    }
+
+    .date-time {
+        width: 80%;
+    }
+
+    .date-time-text {
+        font-size: 14px;
+    }
+
+    .material-symbols-outlined {
+        font-size: 22px;
+    }
+
+    /* ****************** new project btn *********************************** */
+    .new-project-btn{
+        font-size: 15px;
+    }
+    /* ****************** search bar *********************************** */
+    .search-text.search-text::placeholder {
+        font-size: 8px;
+    }
+
+    /* ****************** project table ******************************** */
+
+    .project-table-head {
+        font-size: 12px;
+
+
+    }
+
+    .project-table-body {
+        font-size: 10px;
+    }
+
+
+}
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Yuji+Hentaigana+Akari&display=swap');

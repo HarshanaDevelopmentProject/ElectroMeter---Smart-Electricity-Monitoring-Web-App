@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.mesuring-calculator-outer {
+    width: 100%;
+    height: auto;
+    border: 1px solid red;
+}
+.end-project{
+    position: fixed;
+    right: 0;
+}
+/* ******************************************************* project name ********************************************************************** */
+.project-name-outer {
+    width: 100%;
+    height: 90px;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+/* ********************************************************* project details ****************************************************************** */
+.project-details-outer {
+    width: 100%;
+    height: 200px;
+    border: 1px solid green;
+}
+
+/* *********************************************************** area chart ******************************************************************** */
+.area-chart-outer {
+    width: 100%;
+    height: auto;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.area-chart-inner {
+    width:70%;
+    height:70%;
+    border: 1px solid yellow;
+}
