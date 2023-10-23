@@ -23,7 +23,7 @@
                     <span class="material-symbols-outlined">today</span>
                 </div>
                 <div class="date-time">
-                    <h1 class="date-time-text">2023/07/26</h1>
+                    <h1 class="date-time-text" id="dashboard-date"></h1>
                 </div>
             </div>
             <div class="date-time-inner">
@@ -32,7 +32,7 @@
 
                 </div>
                 <div class="date-time">
-                    <h1 class="date-time-text">08:54:12</h1>
+                    <h1 class="date-time-text" id="dashboard-time"></h1>
                 </div>
             </div>
 
@@ -44,9 +44,10 @@
         </div>
         <div class="project-search-bar-outer">
             <div class="search-bar-inner col-6">
-                <div class="search-input"> <input type="text" name="" id="" class="search-text"
-                        placeholder="search by project name"></div>
-                <div class="search-button"><button class="search-btn-icon"><span
+                <div class="search-input">
+                    <input type="text" name="" id="project-search-text" class="search-text" placeholder="search by project name">
+                </div>
+                <div class="search-button"><button class="search-btn-icon" id="project-search-btn"><span
                             class="material-symbols-outlined">search</span></button></div>
             </div>
 
@@ -54,8 +55,8 @@
 
         </div>
         <div class="dashboard-project-table-outer">
-            <table class="col-12">
-                <thead class="project-table-head">
+            <table class="col-12" >
+                <thead class="project-table-head" >
                     <tr>
                         <th>Project Name</th>
                         <th>Date</th>
@@ -64,7 +65,7 @@
 
                     </tr>
                 </thead>
-                <tbody class="project-table-body">
+                <tbody class="project-table-body" id="project-table">
                     <tr>
                         <td>Project-01</td>
                         <td>2023/05/06</td>
