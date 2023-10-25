@@ -71,10 +71,8 @@ document.getElementById('end-project').addEventListener('click', async () => {
         endTime: new Date().toLocaleTimeString()
     }).then(() => {
         console.log('end time send');
+        location.href = '../page/dashboard.html'
     }).catch();
-    // let confirmMessage = confirm('Are You Sure')
-    // if (confirmMessage) {
-    //     location.href = '../page/dashboard.html'
-    // }
+
 
 });
