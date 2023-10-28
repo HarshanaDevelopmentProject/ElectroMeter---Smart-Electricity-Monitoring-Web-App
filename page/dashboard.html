@@ -15,7 +15,7 @@
     <title>Electricity Bill | Dashboard</title>
 </head>
 
-<body >
+<body>
     <div class="dashboard-outer">
         <div class="dashboard-date-time-outer">
             <div class="date-time-inner">
@@ -45,7 +45,8 @@
         <div class="project-search-bar-outer">
             <div class="search-bar-inner col-6">
                 <div class="search-input">
-                    <input type="text" name="" id="project-search-text" class="search-text" placeholder="search by project name">
+                    <input type="text" name="" id="project-search-text" class="search-text"
+                        placeholder="search by project name">
                 </div>
                 <div class="search-button"><button class="search-btn-icon" id="project-search-btn"><span
                             class="material-symbols-outlined">search</span></button></div>
@@ -54,24 +55,58 @@
 
 
         </div>
-        <div class="dashboard-project-table-outer"  >
-            <table class="col-12" >
-                <thead class="project-table-head" >
-                    <tr>
-                        <th>Project Name</th>
-                        <th>Date</th>
-                        <th>Start time</th>
-                        <th>end Time</th>
+        <div class="dashboard-project-table-outer">
 
-                    </tr>
-                </thead>
-                <tbody class="project-table-body" id="project-table">
+            <div class="last-project-details" id="last-project-details">
+                <div class="latest-project-title-outer">
+                    <h1 class="latest-project-name" id="latest-project-name">Latest Project</h1>
+                </div>
+                <div class="latest-project-details-outer">
+                    <div class="latest-project-info">
+                        <h3>Date :-</h3>
+                        <h4>2023/01/14</h4>
+                    </div>
+                    <div class="latest-project-info">
+                        <h3>Start Time :-</h3>
+                        <h4>20:12:59</h4>
+                    </div>
+                    <div class="latest-project-info">
+                        <h3>End Time :-</h3>
+                        <h4>21:12:10</h4>
+                    </div>
+                    <div class="latest-project-info">
+                        <h3>Cost :-</h3>
+                        <h4>236999</h4>
+                    </div>
+
+                </div>
+                <div class="latest-project-chart">
+
+                </div>
+                <div class="back-to-table-btn-outer">
+                    <button class="back-to-table-btn col-2" id="back-to-table-btn">Back to Table</button>
+                    <button class="delete-project-btn col-2" id="delete-project-btn">Delete Project</button>
+                </div>
+            </div>
+
+            <div class="table-outer" id="table-outer">
+                <table class="col-12 project-table-outer" id="project-table-outer">
+                    <thead class="project-table-head">
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Date</th>
+                            <th>Start time</th>
+                            <th>end Time</th>
+                            <th>More</th>
+
+                        </tr>
+                    </thead>
+                    <tbody class="project-table-body" id="project-table">
 
 
-                </tbody>
-            </table>
-
-
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

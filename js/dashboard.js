@@ -1,4 +1,4 @@
-import { getDocs,collection } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+import { getDocs,collection,deleteDoc,doc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 import {db} from "../environment/fireBaseConfigurationFile.js";
 // ********************************************************************* date and time part ************************************************************************
 let date = document.getElementById('dashboard-date');
@@ -19,12 +19,24 @@ document.addEventListener('DOMContentLoaded',async () => {
     const querySnapshot = await getDocs(collection(db, "projectDetails"));
 
     querySnapshot.forEach((details) => {
+        let btn=document.createElement('button');
+
+        btn.className='more-btn'
+        btn.textContent='More Details'
+
         let table = document.getElementById('project-table');
         let row = table.insertRow();
-        row.insertCell(0).textContent = details.data().projectname
+        let fireBaseNameTableName= row.insertCell(0).textContent = details.data().projectname
         row.insertCell(1).textContent = details.data().date
         row.insertCell(2).textContent = details.data().startTime
         row.insertCell(3).textContent = details.data().endTime
+        row.insertCell(4).appendChild(btn)
+
+        btn.addEventListener('click',()=>{
+
+            loadLastProjectDetails(fireBaseNameTableName);
+        })
+
     });
 
 });
@@ -33,3 +45,36 @@ document.addEventListener('DOMContentLoaded',async () => {
 document.getElementById('new-project-btn').addEventListener('click',()=>{
     location.href = '../page/connect-page.html';
 });
+
+document.getElementById('back-to-table-btn').addEventListener('click',()=>{
+    document.getElementById('last-project-details').style.display='none'
+    document.getElementById('table-outer').style.display='block'
+   
+
+});
+
+
+
+
+let loadLastProjectDetails=(project)=>{
+    document.getElementById('table-outer').style.display='none'
+    document.getElementById('last-project-details').style.display='block'
+    document.getElementById('latest-project-name').textContent=project;
+
+
+     
+    document.getElementById('delete-project-btn').addEventListener('click',async ()=>{
+        await deleteDoc(doc(db , 'projectDetails' , project)).then(()=>{
+            confirm(project+' deleted');
+            document.getElementById('last-project-details').style.display='none'
+            document.getElementById('table-outer').style.display='block'
+            location.reload();
+
+         }).catch()
+   });;
+
+}
+
+
+
+
