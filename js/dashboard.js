@@ -1,5 +1,6 @@
 import { getDocs,collection,deleteDoc,doc } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 import {db} from "../environment/fireBaseConfigurationFile.js";
+import { firestoreDatabase} from "../database/firebaseFirestore.js";
 // ********************************************************************* date and time part ************************************************************************
 let date = document.getElementById('dashboard-date');
 let time = document.getElementById('dashboard-time');
@@ -64,14 +65,15 @@ let loadLastProjectDetails=(project)=>{
 
      
     document.getElementById('delete-project-btn').addEventListener('click',async ()=>{
-        await deleteDoc(doc(db , 'projectDetails' , project)).then(()=>{
-            confirm(project+' deleted');
-            document.getElementById('last-project-details').style.display='none'
-            document.getElementById('table-outer').style.display='block'
-            location.reload();
 
-         }).catch()
-   });;
+         let answer=confirm("Are You Sure Delete "+project);
+         if (answer){
+             await firestoreDatabase.deleteData('projectDetails', project);
+         }else{
+             location.href='../page/dashboard.html'
+         }
+
+   });
 
 }
 

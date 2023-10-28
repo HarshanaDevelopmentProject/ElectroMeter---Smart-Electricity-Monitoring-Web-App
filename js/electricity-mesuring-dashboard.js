@@ -1,43 +1,29 @@
-import {setDoc, doc ,updateDoc} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+import {setDoc, doc, updateDoc} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 import {db, saveProjectName} from "../environment/fireBaseConfigurationFile.js";
+import {firestoreDatabase} from "../database/firebaseFirestore.js";
+
 
 
 // ************************************************************************************* save project name *************************************************************
 let projectName = document.getElementById('newProjectName');
 
-let saveProject = (projectName) => {
-    setDoc(doc(db, 'projectDetails', projectName), {
-        projectname: projectName,
-        date: new Date().toLocaleDateString(),
-        startTime: new Date().toLocaleTimeString(),
-    }).then(async () => {
-        console.log('saved')
+let loadProjectDetails = (name) => {
+    firestoreDatabase.saveData('projectDetails', name);
 
-
-    }).catch(() => {
-        console.log('error')
-    });
-};
-
-let loadProjectDetails=(name)=>{
-    saveProject(name);
-    document.getElementById('project-name-title').textContent=name;
-    document.getElementById('date').textContent=new Date().toLocaleDateString();
-    document.getElementById('start-time').textContent=new Date().toLocaleTimeString();
+    document.getElementById('project-name-title').textContent = name;
+    document.getElementById('date').textContent = new Date().toLocaleDateString();
+    document.getElementById('start-time').textContent = new Date().toLocaleTimeString();
 }
-document.getElementById('createNewProjectBtn').addEventListener('click', () => {
-    if(projectName.value !==''){
+document.getElementById('createNewProjectBtn').addEventListener('click', async () => {
+    if (projectName.value !== '') {
+        document.getElementById('project-name-save-outer').style.display = 'none'
+        document.getElementById('mesuring-calculator-outer').style.display = 'block'
+        await loadProjectDetails(projectName.value);
 
 
-        document.getElementById('project-name-save-outer').style.display='none'
-        document.getElementById('mesuring-calculator-outer').style.display='block'
-        loadProjectDetails(projectName.value);
-
-
-    }else{
+    } else {
         alert('Please enter Project Name');
     }
-
 
 
 })
@@ -67,12 +53,9 @@ chart.render();
 // *************************************************************************************** navigate part ********************************************************
 document.getElementById('end-project').addEventListener('click', async () => {
     console.log(projectName.value);
-    await updateDoc(doc(db, 'projectDetails', projectName.value), {
-        endTime: new Date().toLocaleTimeString()
-    }).then(() => {
-        console.log('end time send');
-        location.href = '../page/dashboard.html'
-    }).catch();
+   await firestoreDatabase.updateData('projectDetails', projectName.value);
+
+
 
 
 });
