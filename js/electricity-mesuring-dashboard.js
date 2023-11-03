@@ -1,5 +1,4 @@
-import {setDoc, doc, updateDoc} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
-import {db, saveProjectName} from "../environment/fireBaseConfigurationFile.js";
+
 import {firestoreDatabase} from "../database/firebaseFirestore.js";
 
 
@@ -8,10 +7,12 @@ import {firestoreDatabase} from "../database/firebaseFirestore.js";
 let projectName = document.getElementById('newProjectName');
 
 let loadProjectDetails = (name) => {
+
     firestoreDatabase.saveData('projectDetails', name);
 
     document.getElementById('project-name-title').textContent = name;
     document.getElementById('date').textContent = new Date().toLocaleDateString();
+    // document.getElementById('start-time').textContent = new Date().toLocaleTimeString();
     document.getElementById('start-time').textContent = new Date().toLocaleTimeString();
 }
 document.getElementById('createNewProjectBtn').addEventListener('click', async () => {

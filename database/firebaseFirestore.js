@@ -1,11 +1,11 @@
-import {setDoc, doc, updateDoc, deleteDoc} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+import {setDoc, doc,getDoc, updateDoc, deleteDoc} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
 import {db} from "../environment/fireBaseConfigurationFile.js";
 
 export let firestoreDatabase = {
     saveData: (databaseName, tablePrimaryName) => {
         setDoc(doc(db, databaseName, tablePrimaryName), {
             projectname: tablePrimaryName,
-            date: new Date().toLocaleDateString(),
+            date: new Date().getFullYear()+'/'+(new Date().getMonth()+1)+'/'+new Date().getDate(),
             startTime: new Date().toLocaleTimeString(),
         }).then(async () => {
             console.log('saved Project')
@@ -15,6 +15,9 @@ export let firestoreDatabase = {
             console.log('error')
         });
     },
+
+
+
 
     updateData : (dataBaseName, tablePrimaryName) => {
         updateDoc(doc(db, dataBaseName, tablePrimaryName), {
