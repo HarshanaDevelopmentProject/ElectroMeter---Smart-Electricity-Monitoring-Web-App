@@ -26,7 +26,7 @@ document.getElementById('project-search-btn').addEventListener('click', async ()
 
             let btn = document.createElement('button');
             btn.className = 'more-btn'
-            btn.textContent = 'More Details'
+            btn.textContent = 'More'
 
             let row = projectTable.insertRow();
             let fireBaseNameTableName = row.insertCell(0).textContent = details.data().projectname
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         let btn = document.createElement('button');
 
         btn.className = 'more-btn'
-        btn.textContent = 'More Details'
+        btn.textContent = 'More'
 
         let table = document.getElementById('project-table');
         let row = table.insertRow();
