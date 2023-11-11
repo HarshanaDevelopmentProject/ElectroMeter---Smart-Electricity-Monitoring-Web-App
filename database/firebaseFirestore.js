@@ -19,9 +19,11 @@ export let firestoreDatabase = {
 
 
 
-    updateData : (dataBaseName, tablePrimaryName) => {
-        updateDoc(doc(db, dataBaseName, tablePrimaryName), {
+    updateData : (dataBaseName, tablePrimaryName ,unit ,cost) => {
+        updateDoc(doc(db, dataBaseName, tablePrimaryName ), {
             endTime: new Date().toLocaleTimeString(),
+            totalUnit:unit,
+            cost:cost,
         }).then(() => {
             console.log('end time send');
             location.href = '../page/dashboard.html'

@@ -15,7 +15,7 @@
     width: 100%;
     height: 100vh;
     border: 1px solid blue;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }

@@ -1,6 +1,44 @@
 import { firestoreDatabase } from "../database/firebaseFirestore.js";
 
+let currentKwh=0;
+let totalCost=0;
+//************************************************************************************** connect to node mcu board part ***********************************************
+let ipAddress = document.getElementById('ip-address');
+let port = document.getElementById('port');
 
+
+document.getElementById('connect-btn').addEventListener('click', async () => {
+    if (ipAddress.value !== '' && port.value !== '') {
+        // const webSocket = new WebSocket('ws://192.168.43.211:81'); // Replace with your NodeMCU's IP address
+        createWebSocketConnection(ipAddress.value,port.value);
+        ipAddress.value = '';
+        port.value = '';
+
+    } else {
+        alert('Please fill node Mcu Board Information !!!');
+    }
+
+});
+
+let createWebSocketConnection=(ipAddress,port)=>{
+    let webSocket= new WebSocket(`ws://${ipAddress}:${port}`);
+
+    webSocket.onopen = function(event) {
+         confirm('Connected...') ;
+        document.getElementById('connect-outer').style.display='none'
+        document.getElementById('project-name-save-outer').style.display='flex'
+    };
+
+    webSocket.onmessage=(message)=>{
+        currentKwh=message.data;
+        totalCost=currentKwh/50;
+    }
+
+     webSocket.onerror=(event)=>{
+         alert('Your Connection lOST Try Again!!!' );
+         location.reload()
+     }
+}
 // ************************************************************************************* save project name *************************************************************
 let projectName = document.getElementById('newProjectName');
 
@@ -10,9 +48,15 @@ let loadProjectDetails = (name) => {
 
     document.getElementById('project-name-title').textContent = name;
     document.getElementById('date').textContent = new Date().toLocaleDateString();
-    // document.getElementById('start-time').textContent = new Date().toLocaleTimeString();
     document.getElementById('start-time').textContent = new Date().toLocaleTimeString();
+    setInterval(()=>{
+        document.getElementById('unit').textContent = `${currentKwh} kwh`
+        document.getElementById('cost').textContent = `Rs : ${totalCost}`
+
+    },1000)
 }
+
+
 document.getElementById('createNewProjectBtn').addEventListener('click', async () => {
     if (projectName.value !== '') {
         document.getElementById('project-name-save-outer').style.display = 'none'
@@ -115,7 +159,36 @@ limitChart.render();
 // *************************************************************************************** navigate part ********************************************************
 document.getElementById('end-project').addEventListener('click', async () => {
     console.log(projectName.value);
-    await firestoreDatabase.updateData('projectDetails', projectName.value);
+    await firestoreDatabase.updateData('projectDetails', projectName.value, currentKwh , totalCost);
 
 
 });
+
+
+
+
+//
+//
+// const webSocket = new WebSocket('ws://192.168.43.211:81'); // Replace with your NodeMCU's IP address
+//
+// webSocket.onopen = function(event) {
+//   console.log('WebSocket connection opened');
+// };
+//
+// webSocket.onmessage = function(event) {
+//
+//     const messageDiv = document.getElementById('unit');
+//     messageDiv.textContent= 'value '+ event.data;
+//
+//
+//
+//
+// };
+//
+// webSocket.onerror = function(event) {
+//   console.error('WebSocket error:', event);
+// };
+//
+// webSocket.onclose = function(event) {
+//   console.log('WebSocket connection closed');
+// };

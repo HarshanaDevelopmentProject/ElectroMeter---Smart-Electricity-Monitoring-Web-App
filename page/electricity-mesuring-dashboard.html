@@ -5,53 +5,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/electricity-mesuring-dashboard.css">
+    <link rel="stylesheet" href="../style/connect-page.css">
     <title>Electricity Bill | Mesuring</title>
     <link rel="icon" href="https://img.icons8.com/?size=64&id=Cj1g0kF53YnD&format=png">
 </head>
 
 <body>
-    <div class="project-name-save-outer" id="project-name-save-outer">
-        <div class="project-name-save-inner">
-            <label for="newProjectName" class="new-project-name-label">Project Name</label>
-            <input type="text" name="" class="new-project-name-input col-9" placeholder="enter Your Project Name"
-                id="newProjectName">
-            <button id="createNewProjectBtn" class="start-project-btn">Start Project Without Limitation Cost</button>
-            <button id="createNewProjectBtnWith-limit" class="start-project-btn">Start Project With Limitation
-                Cost</button>
+
+<div class="connect-outer" id="connect-outer">
+
+    <div class="connect-inner col-9">
+        <div class="connect-form">
+            <!--            <label for="project-name" class="connect-label">Project Name::</label>&nbsp;-->
+            <!--            <input type="text" placeholder="Your Project Name" class="connect-input" id="project-name">-->
+            <!--            <br><br>-->
+
+            <label for="ip-address" class="connect-label">Node Mcu Ip Address::</label>&nbsp;
+            <input type="text" placeholder="Your Nodemcu ip address" class="connect-input" id="ip-address">
+            <br><br>
+
+            <label for="port" class="connect-label">Port Number::</label>&nbsp;
+            <input type="text" placeholder="NodeMcu port number" class="connect-input" id="port">
+            <br><br>
+            <label style="width: 50%;" class="connect-label">Board Type::</label>
+            <select class="form-select connect-selecter " aria-label="Default select example">
+                <option selected>Select type of NodeMcu</option>
+                <option value="1">ESP8266</option>
+                <option value="2">ESP32</option>
+            </select>
+            <br><br>
+            <button id="connect-btn" class="connect-btn ">Connect...</button>
+
         </div>
     </div>
-    <div class="mesuring-calculator-outer" id="mesuring-calculator-outer">
-        <button class="end-project" id="end-project">End Project</button>
+</div>
 
-        <div class="project-name-outer">
-            <h1 id="project-name-title">Project Name</h1>
+<div class="project-name-save-outer" id="project-name-save-outer">
+    <div class="project-name-save-inner">
+        <label for="newProjectName" class="new-project-name-label">Project Name</label>
+        <input type="text" name="" class="new-project-name-input col-9" placeholder="enter Your Project Name"
+               id="newProjectName">
+        <button id="createNewProjectBtn" class="start-project-btn">Start Project Without Limitation Cost</button>
+        <button id="createNewProjectBtnWith-limit" class="start-project-btn">Start Project With Limitation
+            Cost
+        </button>
+    </div>
+</div>
+
+<div class="mesuring-calculator-outer" id="mesuring-calculator-outer">
+    <button class="end-project" id="end-project">End Project</button>
+
+    <div class="project-name-outer">
+        <h1 id="project-name-title">Project Name</h1>
+    </div>
+
+    <div class="project-details-outer">
+        <div class="project-details-inner">
+
+            <div class="details">
+                <h3>Date :-</h3>
+                <h5 id="date"></h5>
+            </div>
+            <div class="details">
+                <h3>Start Time :-</h3>
+                <h5 id="start-time"></h5>
+
+            </div>
+            <div class="details">
+                <h3>Remaing of time :-</h3>
+                <h5 id="remaning-time"></h5>
+            </div>
+            <div class="details">
+                <h3>Unit :-</h3>
+                <h5 id="unit"></h5>
+            </div>
+            <div class="details">
+                <h3>Total Cost :-</h3>
+                <h5 id="cost"></h5>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="area-chart-outer">
+        <div class="area-chart-inner" id="area-chart">
+
+        </div>
+    </div>
+
+</div>
+
+<div class="limit-cost-outer" id="limit-cost-outer">
+
+    <div class="limit-cost-get-outer" id="limit-cost-get-outer">
+        <input type="number" placeholder="enter Your Maximum Cost" class="limit-cost-input-txt"
+               id="limit-cost-input-txt">
+        <button class="limit-cost-input-btn" id="limit-cost-input-btn">Enter Cost</button>
+    </div>
+
+
+    <div class="limit-cost-project-inner" id="limit-cost-project-inner">
+
+        <div class="limit-project-name-outer">
+            <h1 id="limit-project-name-title"> Limit Project Name </h1>
         </div>
 
-        <div class="project-details-outer">
+        <div class="limit-project-details-outer">
             <div class="project-details-inner">
 
                 <div class="details">
                     <h3>Date :-</h3>
-                    <h5 id="date"></h5>
+                    <h5 id="limit-date"></h5>
                 </div>
                 <div class="details">
                     <h3>Start Time :-</h3>
-                    <h5 id="start-time"></h5>
+                    <h5 id="limit-start-time"></h5>
 
                 </div>
                 <div class="details">
                     <h3>Remaing of time :-</h3>
-                    <h5 id="remaning-time"></h5>
+                    <h5 id="limit-remaning-time"></h5>
                 </div>
                 <div class="details">
                     <h3>Unit :-</h3>
-                    <h5 id="unit"></h5>
+                    <h5 id="limit-unit"></h5>
                 </div>
                 <div class="details">
                     <h3>Total Cost :-</h3>
-                    <h5 id="cost"></h5>
+                    <h5 id="limit-cost"></h5>
                 </div>
 
 
@@ -59,7 +143,7 @@
         </div>
 
         <div class="area-chart-outer">
-            <div class="area-chart-inner" id="area-chart">
+            <div class="area-chart-inner" id="limit-area-chart">
 
             </div>
         </div>
@@ -67,68 +151,11 @@
     </div>
 
 
+</div>
 
 
-    <div class="limit-cost-outer" id="limit-cost-outer">
-
-        <div class="limit-cost-get-outer" id="limit-cost-get-outer">
-            <input type="number" placeholder="enter Your Maximum Cost" class="limit-cost-input-txt"
-                id="limit-cost-input-txt">
-            <button class="limit-cost-input-btn" id="limit-cost-input-btn">Enter Cost</button>
-        </div>
-
-
-
-        <div class="limit-cost-project-inner" id="limit-cost-project-inner">
-
-            <div class="limit-project-name-outer">
-                <h1 id="limit-project-name-title"> Limit Project Name </h1>
-            </div>
-
-            <div class="limit-project-details-outer">
-                <div class="project-details-inner">
-
-                    <div class="details">
-                        <h3>Date :-</h3>
-                        <h5 id="limit-date"></h5>
-                    </div>
-                    <div class="details">
-                        <h3>Start Time :-</h3>
-                        <h5 id="limit-start-time"></h5>
-
-                    </div>
-                    <div class="details">
-                        <h3>Remaing of time :-</h3>
-                        <h5 id="limit-remaning-time"></h5>
-                    </div>
-                    <div class="details">
-                        <h3>Unit :-</h3>
-                        <h5 id="limit-unit"></h5>
-                    </div>
-                    <div class="details">
-                        <h3>Total Cost :-</h3>
-                        <h5 id="limit-cost"></h5>
-                    </div>
-
-
-                </div>
-            </div>
-
-            <div class="area-chart-outer">
-                <div class="area-chart-inner" id="limit-area-chart">
-
-                </div>
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="../js/electricity-mesuring-dashboard.js" type="module"></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="../js/electricity-mesuring-dashboard.js" type="module"></script>
 </body>
 
 </html>

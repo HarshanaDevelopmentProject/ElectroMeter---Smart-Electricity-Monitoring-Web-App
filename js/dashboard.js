@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 // ******************************************************************* navigate part *******************************************************************************
 
 document.getElementById('new-project-btn').addEventListener('click', () => {
-    location.href = '../page/connect-page.html';
+    location.href = '../page/electricity-mesuring-dashboard.html';
 });
 
 //******************************************************************** load project details one by one *************************************************************
