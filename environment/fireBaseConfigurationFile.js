@@ -1,12 +1,11 @@
 
-    // Import the functions you need from the SDKs you need
+
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
     import { getFirestore } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
 
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+
     const firebaseConfig = {
     apiKey: "AIzaSyD6u78rLY5WBuKQo0dQHog7B98iRJsVTWg",
     authDomain: "electricity-meter-90d1f.firebaseapp.com",
@@ -21,6 +20,4 @@
     const app = initializeApp(firebaseConfig);
    export const db = getFirestore(app);
 
-    export let saveProjectName={
-        name:'',
-    }
+   export const realtimedb=getDatabase(app);

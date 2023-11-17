@@ -1,6 +1,11 @@
 import {getDocs, collection, getDoc, doc} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
-import {db} from "../environment/fireBaseConfigurationFile.js";
-import {firestoreDatabase} from "../database/firebaseFirestore.js";
+import {get, ref} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+import {db, realtimedb} from "../environment/fireBaseConfigurationFile.js";
+import {firestoreDatabase, realTimeDatabase} from "../database/firebaseFirestore.js";
+
+
+let projectPower = []
+let projectTime = []
 
 // ********************************************************************* date and time part ************************************************************************
 let date = document.getElementById('dashboard-date');
@@ -68,6 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         btn.addEventListener('click', () => {
 
             loadLastProjectDetails(fireBaseNameTableName);
+
         })
 
     });
@@ -82,16 +88,54 @@ document.getElementById('new-project-btn').addEventListener('click', () => {
 //******************************************************************** load project details one by one *************************************************************
 
 document.getElementById('back-to-table-btn').addEventListener('click', () => {
-    document.getElementById('last-project-details').style.display = 'none'
-    document.getElementById('table-outer').style.display = 'block'
+    // document.getElementById('last-project-details').style.display = 'none'
+    // document.getElementById('table-outer').style.display = 'block'
+    location.reload()
 
 
 });
+//********************************************************** last project chart**************************************************************************
+let options = {
+    chart: {
+        type: 'area'
+    },
+    series: [{
+        name: 'Power',
+        data: projectPower
+    }],
+    xaxis: {
+        categories: projectTime
+    }
+}
 
-let loadLastProjectDetails = (project) => {
+let chart = new ApexCharts(document.getElementById('latest-project-chart'), options);
+//*******************************************************************************************************************************************************
+let loadLastProjectDetails = async (project) => {
     document.getElementById('table-outer').style.display = 'none'
     document.getElementById('last-project-details').style.display = 'block'
+    document.getElementById('project-search-bar-outer').style.display='none'
     document.getElementById('latest-project-name').textContent = project;
+
+    const querySnapshot = await getDoc(doc(db, "projectDetails", project));
+    document.getElementById('latest-project-date').textContent = querySnapshot.data().date
+    document.getElementById('latest-project-startTime').textContent = querySnapshot.data().startTime
+    document.getElementById('latest-project-endTime').textContent = querySnapshot.data().endTime
+    document.getElementById('latest-project-unit').textContent = querySnapshot.data().totalUnit
+    document.getElementById('latest-project-cost').textContent = querySnapshot.data().cost
+
+
+    await get(ref(realtimedb, project)).then(data => {
+        data.val().time.forEach((time) => {
+            projectTime.push(time);
+        });
+        data.val().power.forEach((power) => {
+            projectPower.push(power)
+        });
+
+
+    })
+
+    chart.render()
 
 
     document.getElementById('delete-project-btn').addEventListener('click', async () => {
@@ -99,6 +143,7 @@ let loadLastProjectDetails = (project) => {
         let answer = confirm("Are You Sure Delete " + project);
         if (answer) {
             await firestoreDatabase.deleteData('projectDetails', project);
+            await realTimeDatabase.deleteData(project)
         } else {
             location.href = '../page/dashboard.html'
         }
