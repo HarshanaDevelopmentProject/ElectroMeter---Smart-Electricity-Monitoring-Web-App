@@ -25,27 +25,27 @@ document.getElementById('connect-btn').addEventListener('click', async () => {
 });
 
 let createWebSocketConnection=(ipAddress,port)=>{
-    let webSocket= new WebSocket(`ws://${ipAddress}:${port}`);
+    // let webSocket= new WebSocket(`ws://${ipAddress}:${port}`);
 
-     webSocket.onopen = function(event) {
-        confirm('Connected...') ;
+    //  webSocket.onopen = function(event) {
+    //     confirm('Connected...') ;
          document.getElementById('connect-outer').style.display='none'
          document.getElementById('project-name-save-outer').style.display='flex'
-    };
+    // };
 
-     webSocket.onmessage=(message)=>{
-        currentKwh=message.data;
-            sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
-       totalCost=currentKwh/50;
+    //  webSocket.onmessage=(message)=>{
+    //     currentKwh=message.data;
+    //         sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
+    //    totalCost=currentKwh/50;
 
     
 
-    }
+    // }
 
-      webSocket.onerror=(event)=>{
-          alert('Your Connection lOST Try Again!!!' );
-         location.reload()
-      }
+    //   webSocket.onerror=(event)=>{
+    //       alert('Your Connection lOST Try Again!!!' );
+    //      location.reload()
+    //   }
 }
 // ************************************************************************************* area chart *************************************************************
 let options = {
