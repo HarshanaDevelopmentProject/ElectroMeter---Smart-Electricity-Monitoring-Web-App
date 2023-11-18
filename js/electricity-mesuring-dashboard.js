@@ -1,10 +1,10 @@
-import {firestoreDatabase, realTimeDatabase} from "../database/firebaseFirestore.js";
+import { firestoreDatabase, realTimeDatabase } from "../database/firebaseFirestore.js";
 
-let currentKwh=0;
-let totalCost=0;
+let currentKwh = 0;
+let totalCost = 0;
 
-let sendRealTimeDatabaseTime=[]
-let sendRealTimeDatabasePower=[]
+let sendRealTimeDatabaseTime = []
+let sendRealTimeDatabasePower = []
 
 //************************************************************************************** connect to node mcu board part ***********************************************
 let ipAddress = document.getElementById('ip-address');
@@ -14,7 +14,7 @@ let port = document.getElementById('port');
 document.getElementById('connect-btn').addEventListener('click', async () => {
     if (ipAddress.value !== '' && port.value !== '') {
         // const webSocket = new WebSocket('ws://192.168.43.211:81'); // Replace with your NodeMCU's IP address
-        createWebSocketConnection(ipAddress.value,port.value);
+        createWebSocketConnection(ipAddress.value, port.value);
         ipAddress.value = '';
         port.value = '';
 
@@ -24,28 +24,28 @@ document.getElementById('connect-btn').addEventListener('click', async () => {
 
 });
 
-let createWebSocketConnection=(ipAddress,port)=>{
-    // let webSocket= new WebSocket(`ws://${ipAddress}:${port}`);
+let createWebSocketConnection = (ipAddress, port) => {
+    let webSocket = new WebSocket(`ws://${ipAddress}:${port}`);
 
-    //  webSocket.onopen = function(event) {
-    //     confirm('Connected...') ;
-         document.getElementById('connect-outer').style.display='none'
-         document.getElementById('project-name-save-outer').style.display='flex'
-    // };
+    webSocket.onopen = function (event) {
+        confirm('Connected...');
+        document.getElementById('connect-outer').style.display = 'none'
+        document.getElementById('project-name-save-outer').style.display = 'flex'
+    };
 
-    //  webSocket.onmessage=(message)=>{
-    //     currentKwh=message.data;
-    //         sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
-    //    totalCost=currentKwh/50;
+    webSocket.onmessage = (message) => {
+        currentKwh = message.data;
+        sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
+        totalCost = currentKwh / 50;
 
-    
 
-    // }
 
-    //   webSocket.onerror=(event)=>{
-    //       alert('Your Connection lOST Try Again!!!' );
-    //      location.reload()
-    //   }
+    }
+
+    webSocket.onerror = (event) => {
+        alert('Your Connection lOST Try Again!!!');
+        location.reload()
+    }
 }
 // ************************************************************************************* area chart *************************************************************
 let options = {
@@ -71,22 +71,22 @@ let loadProjectDetails = (name) => {
     realTimeDatabase.saveData(projectName.value);
 
     document.getElementById('project-name-title').textContent = name;
-    document.getElementById('date').textContent = new Date().toLocaleDateString();
+    document.getElementById('date').textContent = `${new Date().getFullYear()}/${new Date().getMonth() + 1}/${new Date().getDate()}`;
     document.getElementById('start-time').textContent = new Date().toLocaleTimeString();
-    setInterval(()=>{
+    setInterval(() => {
         document.getElementById('unit').textContent = `${currentKwh} kwh`
         document.getElementById('cost').textContent = `Rs : ${totalCost}`
 
 
-         sendRealTimeDatabasePower.push(currentKwh);
+        sendRealTimeDatabasePower.push(currentKwh);
         sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
-         realTimeDatabase.updateData(projectName.value ,sendRealTimeDatabaseTime,sendRealTimeDatabasePower)
+        realTimeDatabase.updateData(projectName.value, sendRealTimeDatabaseTime, sendRealTimeDatabasePower)
 
 
 
         chart.render();
 
-    },1000)
+    }, 1000)
 }
 
 
@@ -193,7 +193,7 @@ document.getElementById('createNewProjectBtn').addEventListener('click', async (
 document.getElementById('end-project').addEventListener('click', async () => {
     console.log(projectName.value);
 
-    await firestoreDatabase.updateData('projectDetails', projectName.value, currentKwh , totalCost);
+    await firestoreDatabase.updateData('projectDetails', projectName.value, currentKwh, totalCost);
 
 
 

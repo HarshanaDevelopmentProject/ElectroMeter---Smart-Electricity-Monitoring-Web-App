@@ -74,7 +74,7 @@
 .project-search-bar-outer {
     width: 100%;
     height: 80px;
-    
+
     display: flex;
     justify-content: end;
 
@@ -84,18 +84,18 @@
 
     height: 100%;
     display: flex;
-    
+
     align-items: center;
 }
 
 .search-input {
     width: 80%;
     height: 100%;
-    
+
     display: flex;
     justify-content: end;
     align-items: center;
-    
+
 
 }
 
@@ -105,7 +105,7 @@
     border: 2px solid red;
     font-weight: bold;
     font-style: italic;
-    box-shadow: 5px 5px 3px rgb(228, 79, 10) ;
+    box-shadow: 5px 5px 3px rgb(228, 79, 10);
 }
 
 .search-text::placeholder {
@@ -121,10 +121,11 @@
     align-items: center;
 
 }
-.search-button:hover{
+
+.search-button:hover {
     border: 3px solid red;
     background-color: black;
-    
+
 }
 
 .search-btn-icon {
@@ -133,7 +134,8 @@
     background-color: rgba(16, 223, 9, 0.2);
     font-weight: bold
 }
-.search-btn-icon:hover{
+
+.search-btn-icon:hover {
     color: white;
 }
 
@@ -141,21 +143,23 @@
 .dashboard-project-table-outer {
     width: 100%;
     height: auto;
-    
+
     padding-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     /* display: contents; */
 }
+
 /* .project-table-outer{
     display: none;
 } */
-.table-outer{
+.table-outer {
     width: 100%;
     height: 100%;
 
 }
+
 .project-table-head {
     font-size: 25px;
     background-color: rgb(63, 235, 20);
@@ -167,18 +171,20 @@
     background-color: rgba(236, 9, 9, 0.514);
     height: auto;
 }
-.more-btn{
+
+.more-btn {
     width: 60px;
     height: 30px;
-    background-color:rgb(127, 202, 98);
+    background-color: rgb(127, 202, 98);
     margin-top: 10px;
     border-radius: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border: 2px solid greenyellow;
     font-weight: bold;
 }
+
 /* ****************************************************** last project details *************************************************************** */
-.last-project-details{
+.last-project-details {
     width: 95%;
     height: 95%;
     border: 4px dashed rgb(223, 14, 41);
@@ -186,32 +192,37 @@
     background-color: rgba(177, 224, 228, 0.568);
 }
 
-.latest-project-title-outer{
+.latest-project-title-outer {
     width: 100%;
     height: 100px;
 
 }
-.latest-project-name{
+
+.latest-project-name {
     text-align: center;
     font-weight: bold;
     font-style: italic;
     text-decoration: underline;
     font-family: Arial, Helvetica, sans-serif;
 }
-.latest-project-details-outer{
+
+.latest-project-details-outer {
     width: 100%;
     height: 300px;
-    
+
 }
-.latest-project-info{
+
+.latest-project-info {
     display: flex;
 }
-.latest-project-chart{
+
+.latest-project-chart {
     width: 100%;
     height: 500px;
     background-color: rgba(192, 199, 231, 0.767);
 }
-.back-to-table-btn-outer{
+
+.back-to-table-btn-outer {
     width: 100%;
     height: 100px;
     border: 1px solid aqua;
@@ -219,20 +230,23 @@
     justify-content: center;
     align-items: center;
 }
-.back-to-table-btn{
+
+.back-to-table-btn {
     height: 50px;
     border-radius: 20px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-background-color: chartreuse;
-border: 3px solid blue;
-font-style: italic;
+    background-color: chartreuse;
+    border: 3px solid blue;
+    font-style: italic;
 }
-.back-to-table-btn:hover{
+
+.back-to-table-btn:hover {
     text-decoration: underline;
     color: white;
     background-color: black;
 }
-.delete-project-btn{
+
+.delete-project-btn {
     height: 50px;
     border-radius: 20px;
     margin-left: 10px;
@@ -242,11 +256,13 @@ font-style: italic;
     font-style: italic;
 
 }
-.delete-project-btn:hover{
+
+.delete-project-btn:hover {
     text-decoration: underline;
     color: white;
     background-color: black;
 }
+
 /* *************************************************** responcive ******************************************************************************  */
 
 @media (min-width: 1920px) and (max-width: 2560px) {}
@@ -312,11 +328,13 @@ font-style: italic;
     .material-symbols-outlined {
         font-size: 29px;
     }
-   /* ****************** new project btn *********************************** */
 
-   .new-project-btn{
-    font-size: 22px;
-}
+    /* ****************** new project btn *********************************** */
+
+    .new-project-btn {
+        font-size: 22px;
+    }
+
     /* ****************** search bar *********************************** */
 
     .search-text.search-text::placeholder {
@@ -356,11 +374,13 @@ font-style: italic;
     .material-symbols-outlined {
         font-size: 26px;
     }
+
     /* ****************** new project btn *********************************** */
 
-    .new-project-btn{
+    .new-project-btn {
         font-size: 20px;
     }
+
     /* ****************** search bar *********************************** */
 
     .search-text.search-text::placeholder {
@@ -399,10 +419,12 @@ font-style: italic;
     .material-symbols-outlined {
         font-size: 23px;
     }
+
     /* ****************** new project btn *********************************** */
-    .new-project-btn{
+    .new-project-btn {
         font-size: 18px;
     }
+
     /* ****************** search bar *********************************** */
 
     .search-text.search-text::placeholder {
@@ -444,9 +466,10 @@ font-style: italic;
     }
 
     /* ****************** new project btn *********************************** */
-    .new-project-btn{
+    .new-project-btn {
         font-size: 15px;
     }
+
     /* ****************** search bar *********************************** */
     .search-text.search-text::placeholder {
         font-size: 8px;
@@ -468,6 +491,4 @@ font-style: italic;
 }
 
 
-  @import url('https://fonts.googleapis.com/css2?family=Yuji+Hentaigana+Akari&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Yuji+Hentaigana+Akari&display=swap');
