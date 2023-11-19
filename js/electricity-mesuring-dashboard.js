@@ -26,7 +26,7 @@ document.getElementById('connect-btn').addEventListener('click', async () => {
 
 let createWebSocketConnection = (ipAddress, port) => {
     // let webSocket = new WebSocket(`ws://${ipAddress}:${port}`);
-    const webSocket = new WebSocket('ws://192.168.8.144:81');
+    const webSocket = new WebSocket('wss://192.168.8.144:81');
 
     webSocket.onopen = function (event) {
         confirm('Connected...');
