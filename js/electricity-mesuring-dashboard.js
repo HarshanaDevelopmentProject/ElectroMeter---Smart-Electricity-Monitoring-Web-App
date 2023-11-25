@@ -1,6 +1,7 @@
 import { firestoreDatabase, realTimeDatabase } from "../database/firebaseFirestore.js";
 
 let currentKwh = 0;
+let power=0;
 let totalCost = 0;
 
 let sendRealTimeDatabaseTime = []
@@ -25,8 +26,8 @@ document.getElementById('connect-btn').addEventListener('click', async () => {
 });
 
 let createWebSocketConnection = (ipAddress, port) => {
-    // let webSocket = new WebSocket(`ws://${ipAddress}:${port}`);
-    const webSocket = new WebSocket('wss://192.168.8.144:81');
+    let webSocket = new WebSocket(`ws://${ipAddress}:${port}`);
+    // const webSocket = new WebSocket('ws://192.168.8.144:81');
 
     webSocket.onopen = function (event) {
         confirm('Connected...');
@@ -37,7 +38,19 @@ let createWebSocketConnection = (ipAddress, port) => {
     webSocket.onmessage = (message) => {
         currentKwh = message.data;
         sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
-        totalCost = currentKwh / 50;
+        totalCost = currentKwh * 50;
+
+        document.getElementById('unit').textContent = `${currentKwh} kwh`
+        document.getElementById('cost').textContent = `Rs : ${totalCost}`
+
+
+        sendRealTimeDatabasePower.push(currentKwh);
+        sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
+        realTimeDatabase.updateData(projectName.value, sendRealTimeDatabaseTime, sendRealTimeDatabasePower)
+
+
+
+        chart.render();
 
 
 
@@ -46,6 +59,10 @@ let createWebSocketConnection = (ipAddress, port) => {
     webSocket.onerror = (event) => {
         alert('Your Connection lOST Try Again!!!');
         location.reload()
+    }
+    webSocket.onclose=async () => {
+
+        await firestoreDatabase.updateData('projectDetails', projectName.value, currentKwh, totalCost);
     }
 }
 // ************************************************************************************* area chart *************************************************************
@@ -74,20 +91,23 @@ let loadProjectDetails = (name) => {
     document.getElementById('project-name-title').textContent = name;
     document.getElementById('date').textContent = `${new Date().getFullYear()}/${new Date().getMonth() + 1}/${new Date().getDate()}`;
     document.getElementById('start-time').textContent = new Date().toLocaleTimeString();
-    setInterval(() => {
-        document.getElementById('unit').textContent = `${currentKwh} kwh`
-        document.getElementById('cost').textContent = `Rs : ${totalCost}`
+    document.getElementById('unit').textContent = `${currentKwh} kwh`
+    document.getElementById('cost').textContent = `Rs : ${totalCost}`
 
-
-        sendRealTimeDatabasePower.push(currentKwh);
-        sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
-        realTimeDatabase.updateData(projectName.value, sendRealTimeDatabaseTime, sendRealTimeDatabasePower)
-
-
-
-        chart.render();
-
-    }, 1000)
+    // setInterval(() => {
+    //     document.getElementById('unit').textContent = `${currentKwh} kwh`
+    //     document.getElementById('cost').textContent = `Rs : ${totalCost}`
+    //
+    //
+    //     sendRealTimeDatabasePower.push(currentKwh);
+    //     sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
+    //     realTimeDatabase.updateData(projectName.value, sendRealTimeDatabaseTime, sendRealTimeDatabasePower)
+    //
+    //
+    //
+    //     chart.render();
+    //
+    // }, 1000)
 }
 
 
