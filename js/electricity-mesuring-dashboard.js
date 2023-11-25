@@ -26,8 +26,8 @@ document.getElementById('connect-btn').addEventListener('click', async () => {
 });
 
 let createWebSocketConnection = (ipAddress, port) => {
-    let webSocket = new WebSocket(`ws://${ipAddress}:${port}`);
-    // const webSocket = new WebSocket('ws://192.168.8.144:81');
+    // let webSocket = new WebSocket(`ws://${ipAddress}:${port}`);
+    const webSocket = new WebSocket('ws://192.168.8.144:81');
 
     webSocket.onopen = function (event) {
         confirm('Connected...');
@@ -38,7 +38,7 @@ let createWebSocketConnection = (ipAddress, port) => {
     webSocket.onmessage = (message) => {
         currentKwh = message.data;
         sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
-        totalCost = currentKwh * 50;
+        totalCost = currentKwh * 10;
 
         document.getElementById('unit').textContent = `${currentKwh} kwh`
         document.getElementById('cost').textContent = `Rs : ${totalCost}`

@@ -120,8 +120,8 @@ let loadLastProjectDetails = async (project) => {
     document.getElementById('latest-project-date').textContent = querySnapshot.data().date
     document.getElementById('latest-project-startTime').textContent = querySnapshot.data().startTime
     document.getElementById('latest-project-endTime').textContent = querySnapshot.data().endTime
-    document.getElementById('latest-project-unit').textContent = querySnapshot.data().totalUnit
-    document.getElementById('latest-project-cost').textContent = querySnapshot.data().cost
+    document.getElementById('latest-project-unit').textContent = `${querySnapshot.data().totalUnit} KWH`
+    document.getElementById('latest-project-cost').textContent = `Rs: ${querySnapshot.data().cost}`
 
 
     await get(ref(realtimedb, project)).then(data => {
