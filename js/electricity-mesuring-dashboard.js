@@ -1,9 +1,9 @@
 import { firestoreDatabase, realTimeDatabase } from "../database/firebaseFirestore.js";
 
-let currentKwh = 0;
+
 let power=0;
 let totalCost = 0;
-
+let currentKwh = 0;
 let sendRealTimeDatabaseTime = []
 let sendRealTimeDatabasePower = []
 
@@ -26,8 +26,8 @@ document.getElementById('connect-btn').addEventListener('click', async () => {
 });
 
 let createWebSocketConnection = (ipAddress, port) => {
-    // let webSocket = new WebSocket(`ws://${ipAddress}:${port}`);
-    const webSocket = new WebSocket('ws://192.168.8.144:81');
+    let webSocket = new WebSocket(`ws://${ipAddress}:${port}`);
+    // const webSocket = new WebSocket('ws://192.168.43.108:81');
 
     webSocket.onopen = function (event) {
         confirm('Connected...');
@@ -35,24 +35,23 @@ let createWebSocketConnection = (ipAddress, port) => {
         document.getElementById('project-name-save-outer').style.display = 'flex'
     };
 
-    webSocket.onmessage = (message) => {
-        currentKwh = message.data;
-        sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
+    webSocket.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        console.log('Received data:', data);
+
+        currentKwh=data.consumeUnits;
+        power=data.power;
         totalCost = currentKwh * 10;
+        
+        sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
+        sendRealTimeDatabasePower.push(power);
 
         document.getElementById('unit').textContent = `${currentKwh} kwh`
         document.getElementById('cost').textContent = `Rs : ${totalCost}`
 
-
-        sendRealTimeDatabasePower.push(currentKwh);
-        sendRealTimeDatabaseTime.push(new Date().toLocaleTimeString())
         realTimeDatabase.updateData(projectName.value, sendRealTimeDatabaseTime, sendRealTimeDatabasePower)
 
-
-
         chart.render();
-
-
 
     }
 
